@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<script>
+  function checks(){
+    var check = document.getElementById("bfile").value;
+    if(!check){
+      alert("파일을 첨부해주세요");
+    }
+  }
+  </script>
+
+  <body style="text-align: center;">
+    <h3>Upload File!</h3>
+    <hr width="100%" color="black"/>
+
+    <img src="{{ url_for('static',filename='images/upload.png') }}", width="70" 
+        style="margin-left: auto; margin-right: auto; display: block;")/>
+
+    <br><br>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <form action="http://localhost:5000/fileUpload" method="POST"
+            enctype = "multipart/form-data" class="custom-file">
+            <input type="file" name="file" id="bfile"/>
+            <input type="submit" class="btn btn-outline-dark" onclick="checks();"/>
+          </form>
+          </div>
+        </div>
+    </div>
+  </body>
+{% endblock %}
