@@ -1,14 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-<script>
-  function checks(){
-    var check = document.getElementById("bfile").value;
-    if(!check){
-      alert("파일을 첨부해주세요");
-    }
-  }
-  </script>
-
   <body style="text-align: center;">
     <h3>Upload File!</h3>
     <hr width="100%" color="black"/>
@@ -20,10 +11,10 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <form action="http://localhost:5000/fileUpload" method="POST"
+          <form action="/fileUpload" method="POST"
             enctype = "multipart/form-data" class="custom-file">
             <input type="file" name="file" id="bfile"/>
-            <input type="submit" class="btn btn-outline-dark" onclick="checks();"/>
+            <input type="submit" class="btn btn-outline-dark"/>
           </form>
           </div>
         </div>
