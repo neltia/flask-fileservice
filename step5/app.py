@@ -37,7 +37,7 @@ def main_page():
     form = FileForm()
     if form.validate_on_submit():
         f = form.files.data
-        f.save('./uploads/' + secure_filename(f.filename))
+        f.save('./uploads/' + f.filename)
         return render_template('check.html', pwd=os.getcwd() + "\\uploads")
 
     filelist = os.listdir('./uploads')
