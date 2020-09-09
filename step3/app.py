@@ -48,4 +48,4 @@ def upload_page():
 
 if __name__ == '__main__':
 	#서버 실행
-	app.run(host='0.0.0.0', debug = True)
+	app.run()
