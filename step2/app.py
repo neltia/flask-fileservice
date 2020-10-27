@@ -5,7 +5,6 @@ from flask import redirect, url_for
 
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired
-from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "secret"
@@ -18,7 +17,7 @@ def upload_page():
     form = FileForm()
     if form.validate_on_submit():
         f = form.files.data
-        f.save('./uploads/' + secure_filename(f.filename))
+        f.save('./uploads/' + f.filename)
         return render_template('check.html')
     return render_template('upload.html', form=form)
 

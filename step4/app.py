@@ -5,7 +5,6 @@ from flask import redirect, url_for
 
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired
-from werkzeug.utils import secure_filename
 
 import os
 import datetime
@@ -31,7 +30,7 @@ def main_page():
     form = FileForm()
     if form.validate_on_submit():
         f = form.files.data
-        f.save('./uploads/' + secure_filename(f.filename))
+        f.save('./uploads/' + f.filename)
         return render_template('check.html', pwd=os.getcwd() + "\\uploads")
 
     filelist = os.listdir('./uploads')

@@ -6,7 +6,6 @@ from flask import send_file
 
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired
-from werkzeug.utils import secure_filename
 
 import os
 import datetime
@@ -24,9 +23,8 @@ def stamp2real(stamp):
 def info(filename):
 	ctime = os.path.getctime(filename) # 만든시간
 	mtime = os.path.getmtime(filename) # 수정시간
-	atime = os.path.getatime(filename) # 마지막 엑세스시간
 	size = os.path.getsize(filename) # 파일크기 (단위: bytes)
-	return ctime, mtime, atime, size
+	return ctime, mtime, size
 
 @app.errorhandler(404)
 def page_not_found(error):
@@ -44,7 +42,7 @@ def main_page():
     infos = []
     for name in filelist:
         fileinfo = {}
-        ctime, mtime, atime, size = info('./uploads/' + name)
+        ctime, mtime, size = info('./uploads/' + name)
         fileinfo["name"] = name
         fileinfo["create"] = stamp2real(ctime)
         fileinfo["modify"] = stamp2real(mtime)
